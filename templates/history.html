@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Shield - Scan History</title>
+
+    <style>
+        body {
+            background: #0b1220;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 35px;
+        }
+
+        h1 {
+            color: #45c8ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: #14223a;
+        }
+
+        th, td {
+            padding: 16px;
+            border: 1px solid #263b5c;
+            text-align: left;
+        }
+
+        th {
+            color: #45c8ff;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            color: #45c8ff;
+        }
+
+        .empty {
+            color: #9aabc2;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>AI SHIELD - Scan History</h1>
+
+    <p>Previous Security Assessment Records</p>
+
+    {% if scans %}
+
+    <table>
+        <tr>
+            <th>Scan ID</th>
+            <th>Target</th>
+            <th>Date</th>
+            <th>Total Findings</th>
+        </tr>
+
+        {% for scan in scans %}
+        <tr>
+            <td>{{ scan[0] }}</td>
+            <td>{{ scan[1] }}</td>
+            <td>{{ scan[2] }}</td>
+            <td>{{ scan[3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+
+    <p class="empty">No scan history available yet.</p>
+
+    {% endif %}
+
+    <a href="/">Back to Dashboard</a>
+
+</body>
+</html>
